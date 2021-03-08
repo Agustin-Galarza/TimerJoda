@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FirstTest {
+    //TODO: Agregar testeo del reset
     public Timer mockTimer;
     private static double EPSILON = 0.0001;
 
@@ -18,7 +19,7 @@ public class FirstTest {
     public void shouldBe__1d2hs0m23_04sec(){
         mockTimer.stop(93623040);
         //System.out.println(mockTimer);
-        assertEquals(93623040, mockTimer.getResult());
+        assertEquals(93623040, mockTimer.getElapsedTime());
         assertEquals(1, mockTimer.getDays());
         assertEquals(2, mockTimer.getHours());
         assertEquals(0, mockTimer.getMinutes());
@@ -29,7 +30,7 @@ public class FirstTest {
     public void shouldBe__0(){
         mockTimer.stop(0);
         //System.out.println(mockTimer);
-        assertEquals(0, mockTimer.getResult());
+        assertEquals(0, mockTimer.getElapsedTime());
         assertEquals(0, mockTimer.getDays());
         assertEquals(0, mockTimer.getHours());
         assertEquals(0, mockTimer.getMinutes());
@@ -38,7 +39,7 @@ public class FirstTest {
         Timer t = new Timer();
         t.stop();
         //System.out.println(mockTimer);
-        assertEquals(0, t.getResult());
+        assertEquals(0, t.getElapsedTime());
         assertEquals(0, t.getDays());
         assertEquals(0, t.getHours());
         assertEquals(0, t.getMinutes());

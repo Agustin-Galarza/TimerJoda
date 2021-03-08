@@ -2,7 +2,7 @@ package main;
 import org.joda.time.*;
 
 public class Timer {
-    private final Instant start;
+    private Instant start;
     private Period delta;
 
     public Timer(long start){
@@ -29,13 +29,21 @@ public class Timer {
         this.stop(Instant.now());
     }
 
-    public long getResult(){
+    public void reset(){
+        this.start = Instant.now();
+    }
+
+    public void reset(long newStart){
+        this.start = new Instant(newStart);
+    }
+
+    public long getElapsedTime(){
         return delta.toStandardDuration().getMillis();
     }
 
     public int getDays(){
-        return delta.getDays();
-    }
+        return delta.toStandardDays().getDays();
+    } //TODO: Checkear
 
     public int getHours(){
         return delta.getHours();
