@@ -19,6 +19,8 @@ public class Timer {
 
     public void stop(Instant end){
         delta = new Period(start,end);
+        if(delta.get(DurationFieldType.millis()) < 0)
+            throw new RuntimeException("Bad end");
     }
 
     public void stop(long end){
@@ -42,19 +44,19 @@ public class Timer {
     }
 
     public int getDays(){
-        return delta.toStandardDays().getDays();
+        return delta.get(DurationFieldType.days());
     } //TODO: Checkear
 
     public int getHours(){
-        return delta.getHours();
+        return delta.get(DurationFieldType.hours());
     }
 
     public int getMinutes(){
-        return delta.getMinutes();
+        return delta.get(DurationFieldType.minutes());
     }
 
     public double getSeconds(){
-        return delta.getSeconds() + delta.getMillis()/1000d;
+        return delta.get(DurationFieldType.seconds()) + delta.get(DurationFieldType.millis())/1000d;
     }
 
     @Override
